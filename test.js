@@ -6,6 +6,6 @@ describe('Bustle', function() {
         request
             .get('/')
             .expect(200)
-            .expect('Hello World', done);
+            .expect('Welcome to Bustle!', done);
     });
 });
