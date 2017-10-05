@@ -1,5 +1,5 @@
-var app = require('../app');
-var request = require('supertest').agent(app.listen());
+const app = require('../app');
+const request = require('supertest').agent(app.listen());
 
 describe('General Functions', function() {
     it('/status should say "working"', function(done) {
