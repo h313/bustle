@@ -2,17 +2,17 @@ const app = require('../app');
 const request = require('supertest').agent(app.listen());
 
 describe('General Functions', function() {
-    it('/status should say "working"', function(done) {
+    it('/status should say "working"', function() {
         request
             .get('/status')
             .expect(200)
-            .expect('working', done);
+            .expect('working');
     });
-    it('/student should say "student_working"', function(done) {
+    it('/student should say "student_working"', function() {
         request
             .get('/student')
             .expect(200)
-            .expect('student_working', done);
+            .expect('student_working');
     });
     it('/driver should say "driver_working"', function(done) {
         request
