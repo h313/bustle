@@ -1,11 +1,23 @@
 var app = require('../app');
 var request = require('supertest').agent(app.listen());
 
-describe('Bustle', function() {
-    it('/status should say "Im working!"', function(done) {
+describe('General Functions', function() {
+    it('/status should say "working"', function(done) {
         request
             .get('/status')
             .expect(200)
-            .expect("I'm working!", done);
+            .expect('working', done);
+    });
+    it('/student should say "student_working"', function(done) {
+        request
+            .get('/student')
+            .expect(200)
+            .expect('student_working', done);
+    });
+    it('/driver should say "driver_working"', function(done) {
+        request
+            .get('/driver')
+            .expect(200)
+            .expect('driver_working', done);
     });
 });

@@ -1,8 +1,8 @@
 const Router = require('koa-router');
-const router = new Router({ prefix: '/status' });
+const router = new Router({ prefix: '/student' });
 
 router.get('/', async (ctx, next) => {
-    ctx.body = 'working';
+    ctx.body = 'student_working';
 });
 
 module.exports = router;
