@@ -3,7 +3,8 @@ import {observer} from 'mobx-react';
 
 import styles from './App.css';
 
-const App = observer(class App extends Component {
+@observer
+class App extends Component {
   render() {
     return (
       <div className={styles.App}>
@@ -16,6 +17,6 @@ const App = observer(class App extends Component {
   onReset() {
     this.props.appState.resetTimer();
   }
-});
+}
 
 export default App;
