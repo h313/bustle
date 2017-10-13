@@ -2,22 +2,48 @@ const app = require('../app');
 const request = require('supertest').agent(app.listen());
 
 describe('General Functions', function() {
-    it('/status should say "working"', function() {
+    it('/status should say "working"', function(done) {
         request
-            .get('/status')
+            .get('/status/')
             .expect(200)
-            .expect('working');
+            .expect('working')
+            .end(function(err, res) {
+                if (err)
+                    return done(err);
+                done();
+            });
     });
-    it('/student should say "student_working"', function() {
+    it('/student/test should say "student_working"', function(done) {
         request
-            .get('/student')
+            .get('/student/test')
             .expect(200)
-            .expect('student_working');
+            .expect('student_working')
+            .end(function(err, res) {
+                if (err)
+                    return done(err);
+                done();
+            });
     });
-    it('/driver should say "driver_working"', function(done) {
+    it('/driver/test should say "driver_working"', function(done) {
         request
-            .get('/driver')
+            .get('/driver/test')
             .expect(200)
-            .expect('driver_working', done);
+            .expect('driver_working')
+            .end(function(err, res) {
+                if (err)
+                    return done(err);
+                done();
+            });
+    });
+    it('/school/test should say "school_working"', function(done) {
+        request
+            .get('/school/test')
+            .expect(200)
+            .expect('school_working')
+            .end(function(err, res) {
+                if (err)
+                    return done(err);
+                done();
+            });
     });
 });
