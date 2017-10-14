@@ -32,9 +32,9 @@ class App extends Component {
           }}
         />
         <div className={styles.info}>
-          <p>lat: {this.props.store.latitude.toFixed(2)}</p>
-          <p>lon: {this.props.store.longitude.toFixed(2)}</p>
-          <p>zoom: {this.props.store.zoom.toFixed(2)}</p>
+          <p>LAT: {this.props.store.latitude.toFixed(2)}</p>
+          <p>LON: {this.props.store.longitude.toFixed(2)}</p>
+          <p>ZOOM: {this.props.store.zoom.toFixed(2)}</p>
         </div>
       </div>
     );
