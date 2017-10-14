@@ -6,12 +6,23 @@ import styles from './App.css';
 
 @observer
 class App extends Component {
+  componentDidMount() {
+    window.addEventListener('resize', this._resize);
+    this._resize();
+  }
+
+  _resize = () => {
+    this.props.store.setSize(
+      window.innerWidth,
+      window.innerHeight
+    )
+  };
   render() {
     return (
       <div>
         <ReactMapGL
-          width={400}
-          height={400}
+          width={this.props.store.width}
+          height={this.props.store.height}
           latitude={this.props.store.latitude}
           longitude={this.props.store.longitude}
           zoom={this.props.store.zoom}
@@ -21,9 +32,9 @@ class App extends Component {
           }}
         />
         <div className={styles.info}>
-          <p>lat: {this.props.store.latitude}</p>
-          <p>lon: {this.props.store.longitude}</p>
-          <p>zoom: {this.props.store.zoom}</p>
+          <p>lat: {this.props.store.latitude.toFixed(2)}</p>
+          <p>lon: {this.props.store.longitude.toFixed(2)}</p>
+          <p>zoom: {this.props.store.zoom.toFixed(2)}</p>
         </div>
       </div>
     );
