@@ -3,17 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import {observable, action} from 'mobx';
+import { useStrict, observable, action } from 'mobx';
+
+useStrict(true);
 
 const appState = observable({
-  timer: 0,
+  latitude: 37.7577,
+  longitude: -122.4376,
+  zoom: 8,
 });
 
-appState.resetTimer = action(() => appState.timer = 0);
+appState.setView = action(function(lat, lon, zoom) {
+  this.latitude = lat;
+  this.longitude = lon;
+  this.zoom = zoom;
+});
 
-setInterval(action(() =>
-  appState.timer += 1
-), 1000);
-
-ReactDOM.render(<App appState={appState} />, document.getElementById('root'));
+ReactDOM.render(<App store={appState} />, document.getElementById('root'));
 registerServiceWorker();

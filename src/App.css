@@ -1,3 +1,6 @@
-.App {
-  text-align: center;
+.info {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-right: 1em;
 }
