@@ -8,9 +8,9 @@ import { useStrict, observable, action } from 'mobx';
 useStrict(true);
 
 const appState = observable({
-  latitude: 37.7577,
-  longitude: -122.4376,
-  zoom: 8,
+  latitude: 39.72,
+  longitude: -75.61,
+  zoom: 10.48,
   width: window.innerWidth,
   height: window.innerHeight
 });
