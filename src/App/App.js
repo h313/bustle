@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {observer} from 'mobx-react';
 import ReactMapGL from 'react-map-gl';
 
+import streetStyle from './map-style.json';
 import styles from './App.css';
 
 @observer
@@ -21,6 +22,7 @@ class App extends Component {
     return (
       <div>
         <ReactMapGL
+          mapStyle={streetStyle}
           width={this.props.store.width}
           height={this.props.store.height}
           latitude={this.props.store.latitude}
