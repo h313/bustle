@@ -4,26 +4,23 @@ import './index.css';
 import App from './App/App';
 import registerServiceWorker from './registerServiceWorker';
 import { useStrict, observable, action } from 'mobx';
+import mapboxgl from 'mapbox-gl';
 
 useStrict(true);
+mapboxgl.accessToken = 'pk.eyJ1IjoidmVnZ2llZGVmZW5kZXIiLCJhIjoiY2o4ajJhenA4MTl0OTMybDliaGJ4ODQzZiJ9.NZW7Mbl82OFrTOK9l9nN8Q'
 
 const appState = observable({
-  latitude: 39.72,
-  longitude: -75.61,
-  zoom: 10.48,
-  width: window.innerWidth,
-  height: window.innerHeight
+  view: {
+    lat: 39.66,
+    lng: -75.60,
+    zoom: 9.93
+  }
 });
 
-appState.setView = action(function(lat, lon, zoom) {
-  this.latitude = lat;
-  this.longitude = lon;
+appState.view.setView = action(function(lng, lat, zoom) {
+  this.lng = lng;
+  this.lat = lat;
   this.zoom = zoom;
-});
-
-appState.setSize = action(function(width, height) {
-  this.width = width;
-  this.height = height;
 });
 
 ReactDOM.render(<App store={appState} />, document.getElementById('root'));
