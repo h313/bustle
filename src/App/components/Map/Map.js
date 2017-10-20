@@ -10,7 +10,7 @@ export default class Map extends Component {
     const view = this.props.view;
     const map = new mapboxgl.Map({
       container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/streets-v9',
+      style: 'mapbox://styles/mapbox/streets-v9?optimize=true',
       center: [view.lng, view.lat],
       zoom: view.zoom
     });
