@@ -11,9 +11,9 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidmVnZ2llZGVmZW5kZXIiLCJhIjoiY2o4ajJhenA4MTl0O
 
 const appState = observable({
   view: {
-    lat: 39.66,
-    lng: -75.60,
-    zoom: 9.93
+    lat: 39.7444,
+    lng: -75.5690,
+    zoom: 12.95
   }
 });
 
