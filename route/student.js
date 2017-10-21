@@ -23,4 +23,12 @@ router.get('/signup', async (ctx, next) => {
     });
 });
 
+router.get('/bus_location', async (ctx, next) => {
+    Student.findOne({
+        attributes: ['id', ctx.request.body.id]
+    }).then(student => {
+        ctx.body = client.get(student.driver);
+    });;
+});
+
 module.exports = router;

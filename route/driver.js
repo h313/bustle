@@ -12,8 +12,9 @@ router.get('/test', async (ctx, next) => {
     ctx.body = 'driver_working';
 });
 
-router.get('/update_location', async (ctx, next) => {
-    ctx.body = 'todo';
+router.post('/update_location', async (ctx, next) => {
+    client.set(ctx.request.body.username, [ctx.request.body.latitude, ctx.request.body.longitude]);
+    ctx.body = {'success': 1};
 });
 
 module.exports = router;
