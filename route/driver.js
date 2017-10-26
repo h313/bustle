@@ -13,7 +13,7 @@ router.get('/test', async (ctx, next) => {
 });
 
 router.post('/update_location', async (ctx, next) => {
-    client.set(ctx.request.body.username, [ctx.request.body.latitude, ctx.request.body.longitude]);
+    client.set(ctx.request.body.id, [ctx.request.body.latitude, ctx.request.body.longitude]);
     ctx.body = {'success': 1};
 });
 
