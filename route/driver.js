@@ -12,6 +12,30 @@ router.get('/test', async (ctx, next) => {
     ctx.body = 'driver_working';
 });
 
+router.get('/signup', async (ctx, next) => {
+    sequelize.sync().then(function() {
+        return Driver.create({
+            username: ctx.request.body.username,
+            password: ctx.request.body.password,
+            name: ctx.request.body.name,
+            school: ctx.request.body.school
+        });
+    }).then(function(driver) {
+        let driver_stats = new DriverStats({id: driver.id, name: driver.name, school: driver.school});
+        driver_stats.save(function (err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('meow');
+            }
+        });
+        console.log(driver.get({
+            plain: true
+        }));
+    });
+});
+
+
 router.post('/update_location', async (ctx, next) => {
     client.set(ctx.request.body.id, [ctx.request.body.latitude, ctx.request.body.longitude]);
     ctx.body = {'success': 1};
