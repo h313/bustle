@@ -58,4 +58,7 @@ typings/
 .env
 
 # JetBrains config files
-.idea
+.idea/
+
+# Visual Studio config files
+.vs/
