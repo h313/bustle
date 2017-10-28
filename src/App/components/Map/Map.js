@@ -6,6 +6,9 @@ import {
   GoogleMap,
 } from 'react-google-maps';
 
+import Markers from "./Markers";
+import Search from "./Search";
+import StopList from "./Stops/StopList";
 
 @observer
 @withScriptjs
@@ -14,7 +17,6 @@ export default class Map extends Component {
   onClick = (e) => {
     const lat = e.latLng.lat();
     const lng = e.latLng.lng();
-    console.log({lat, lng});
     this.props.store.pushStop(lat, lng);
   }
 
@@ -25,7 +27,9 @@ export default class Map extends Component {
         defaultCenter={{lat: 39.659, lng: -75.566}}
         onClick={this.onClick}
       >
-        {this.props.children}
+        <Search store={this.props.store} />
+        <StopList stops={this.props.store.stops} />
+        <Markers stops={this.props.store.stops} />
       </GoogleMap>
     );
   }

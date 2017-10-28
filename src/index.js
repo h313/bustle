@@ -5,24 +5,16 @@ import App from './App/App';
 import registerServiceWorker from './registerServiceWorker';
 import { useStrict, observable, action } from 'mobx';
 
+import bus_4_sample_stops from './bus_4_sample_stops.json';
+
 useStrict(true);
 
 const appState = observable({
-  stops: [
-    {
-      id: 0,
-      lat: -34.397,
-      lng: 150.644
-    }
-  ]
+  stops: bus_4_sample_stops
 });
 
-appState.pushStop = action(function(lat, lng) {
-  this.stops.push({
-    id: this.stops.length,
-    lat: lat,
-    lng: lng
-  });
+appState.pushStop = action(function(stop) {
+  this.stops.push(stop);
 });
 
 ReactDOM.render(<App store={appState} />, document.getElementById('root'));

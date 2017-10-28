@@ -1,0 +1,6 @@
+.stopList {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  background-color: white;
+}
