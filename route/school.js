@@ -28,6 +28,4 @@ router.get('/bus_location', async (ctx, next) => {
     });
 });
 
-
-
 module.exports = router;
