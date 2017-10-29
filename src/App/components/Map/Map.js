@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React, { Component } from 'react';
-import {observer} from 'mobx-react';
+import { observer } from 'mobx-react';
 import {
   withScriptjs,
   withGoogleMap,
@@ -11,6 +11,7 @@ import Markers from "./Markers";
 import Search from "./Search";
 import StopList from "./Stops/StopList";
 import Directions from "./Directions";
+
 
 @observer
 @withScriptjs
@@ -35,17 +36,19 @@ export default class Map extends Component {
       }
     )
   }
+
   render() {
+    const store = this.props.store;
     return (
       <GoogleMap
         defaultZoom={11}
         defaultCenter={{lat: 39.659, lng: -75.566}}
         onClick={this.handleClick}
       >
-        <Search store={this.props.store} />
-        <StopList store={this.props.store} />
-        <Markers store={this.props.store} />
-        <Directions store={this.props.store} />
+        <Search store={store} />
+        <StopList store={store} />
+        <Markers store={store} />
+        <Directions store={store} />
       </GoogleMap>
     );
   }
