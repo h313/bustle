@@ -15,7 +15,7 @@ export default class Markers extends Component {
   render() {
     const stops = this.props.store.stops;
 
-    if (stops.length == 0) {
+    if (stops.length <= 1) {
       return null;
     }
 
@@ -34,7 +34,10 @@ export default class Markers extends Component {
       }
     });
     return (
-      this.state.directions && <DirectionsRenderer directions={this.state.directions} />
+      this.state.directions &&
+      <DirectionsRenderer
+        directions={this.state.directions}
+      />
     );
   }
 }
