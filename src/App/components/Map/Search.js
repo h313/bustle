@@ -14,8 +14,10 @@ export default class Search extends Component {
       this.props.store.pushStop({
         id: place.place_id,
         name: place.name,
-        lat: place.geometry.location.lat(),
-        lng: place.geometry.location.lng()
+        location: {
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng()
+        }
       })
     );
   }

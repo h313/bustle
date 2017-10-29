@@ -8,11 +8,12 @@ import styles from './StopList.css';
 @observer
 export default class StopList extends Component {
   render() {
-    return (
+    const store = this.props.store;
+    return (      
       <div className={styles.stopList}>
         <h1>bus stops:</h1>
-        {this.props.stops.map(stop =>
-          <StopItem stop={stop} key={stop.id} />
+        {store.stops.map(stop =>
+          <StopItem stop={stop} store={store} key={stop.id} />
         )}
       </div>
     );

@@ -10,11 +10,16 @@ import bus_4_sample_stops from './bus_4_sample_stops.json';
 useStrict(true);
 
 const appState = observable({
-  stops: bus_4_sample_stops
+  stops: bus_4_sample_stops,
+  directions: {}
 });
 
 appState.pushStop = action(function(stop) {
   this.stops.push(stop);
+});
+
+appState.removeStop = action(function(id) {
+  this.stops = this.stops.filter(stop => stop.id != id);
 });
 
 ReactDOM.render(<App store={appState} />, document.getElementById('root'));
