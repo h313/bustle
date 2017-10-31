@@ -11,7 +11,7 @@ export default class StopList extends Component {
     const store = this.props.store;
     return (      
       <div className={styles.stopList}>
-        <h1>bus stops:</h1>
+        <h1>Bus Stops:</h1>
         {store.stops.map(stop =>
           <StopItem stop={stop} store={store} key={stop.id} />
         )}
