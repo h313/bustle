@@ -1,5 +1,6 @@
 const Router = require('koa-router');
 const router = new Router({ prefix: '/student' });
+const koaBody = require('koa-body');
 
 const db = require('../db/postgres'),
     sequelize = db.sequelize,
@@ -11,7 +12,7 @@ router.get('/test', async (ctx, next) => {
     ctx.body = 'student_working';
 });
 
-router.get('/signup', koaBody(), async (ctx, next) => {
+router.post('/signup', koaBody(), async (ctx, next) => {
     sequelize.sync().then(function() {
         return Student.create({
             username: ctx.request.body.username,

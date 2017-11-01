@@ -11,8 +11,7 @@ const School = sequelize.define('school', {
     username: Sequelize.STRING,
     password: Sequelize.STRING,
     name: Sequelize.STRING,
-    students: Sequelize.ARRAY(Sequelize.INTEGER),
-    drivers: Sequelize.ARRAY(Sequelize.INTEGER)
+    students: Sequelize.ARRAY(Sequelize.INTEGER)
 });
 
 module.exports = School;

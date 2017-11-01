@@ -31,7 +31,7 @@ router.post('/signup', koaBody(), async (ctx, next) => {
 });
 
 router.post('/update_location', koaBody(), async (ctx, next) => {
-    client.set(ctx.request.body.id, [ctx.request.body.lat, ctx.request.body.long].toString());
+    client.set(ctx.request.body.id, JSON.stringify({lat: ctx.request.body.lat, long: ctx.request.body.long}));
     ctx.body = JSON.stringify({success: 1});
 });
 

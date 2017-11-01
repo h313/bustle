@@ -1,5 +1,6 @@
 const Router = require('koa-router');
 const router = new Router({ prefix: '/school' });
+const koaBody = require('koa-body');
 
 const db = require('../db/postgres'),
     sequelize = db.sequelize,
@@ -12,19 +13,43 @@ router.get('/test', async (ctx, next) => {
     ctx.body = 'school_working';
 });
 
+router.post('/signup', koaBody(), async (ctx, next) => {
+    sequelize.sync().then(function() {
+        return School.create({
+            username: ctx.request.body.username,
+            password: ctx.request.body.password,
+            name: ctx.request.body.name
+        });
+    }).then(function(school) {
+        ctx.body = JSON.stringify({id: school.id});
+    });
+});
+
 router.get('/get_buses', koaBody(), async (ctx, next) => {
     School.findOne({
-        attributes: ['id', ctx.request.body.id]
-    }).then(school => {
-        ctx.body = school.drivers;
-    });
+        attributes: ['school', ctx.request.body.id]
+    }.then(school => {
+        Driver.findAll({
+            attributes: ['school', school.id]
+        }).then(drivers => {
+            ret = [];
+            drivers.forEach(function(driver) {
+                ret.push(driver.id);
+            });
+            ctx.body = ret;
+        });
+    }));
 });
 
 router.get('/bus_location', koaBody(), async (ctx, next) => {
     Driver.findOne({
-        attributes: ['id', ctx.request.body.driverid]
+        where: {
+            id: ctx.request.headers.driver_id
+        }
     }).then(bus => {
-        ctx.body = client.get(bus.id);
+        client.get(bus.id, function(err, coords) {
+            ctx.body = JSON.stringify(coords);
+        });
     });
 });
 
