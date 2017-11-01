@@ -16,7 +16,8 @@ router.post('/signup', koaBody(), async (ctx, next) => {
     sequelize.sync().then(function() {
         return Student.create({
             username: ctx.request.body.username,
-            password: ctx.request.body.password
+            password: ctx.request.body.password,
+            school: ctx.request.body.school
         });
     }).then(function(student) {
         console.log(student.get({
@@ -24,6 +25,18 @@ router.post('/signup', koaBody(), async (ctx, next) => {
         }));
     });
 });
+
+router.get('/attachdriver', koaBody(), async (ctx, next) => {
+    Student.findOne({
+        attributes: ['id', ctx.request.body.id]
+    }).then(student => {
+        student.driver = ctx.request.body.driver;
+        student.save().then(() => {
+            ctx.body = JSON.stringify({success: 1});
+        });
+    });
+});
+
 
 router.get('/bus_location', koaBody(), async (ctx, next) => {
     Student.findOne({
