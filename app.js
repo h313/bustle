@@ -12,4 +12,4 @@ app.use(ctx => {
 
 app.listen(8080);
 
-module.exports = koaBody;
+module.exports = app;

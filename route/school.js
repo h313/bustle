@@ -12,7 +12,7 @@ router.get('/test', async (ctx, next) => {
     ctx.body = 'school_working';
 });
 
-router.get('/get_buses', async (ctx, next) => {
+router.get('/get_buses', koaBody(), async (ctx, next) => {
     School.findOne({
         attributes: ['id', ctx.request.body.id]
     }).then(school => {
@@ -20,7 +20,7 @@ router.get('/get_buses', async (ctx, next) => {
     });
 });
 
-router.get('/bus_location', async (ctx, next) => {
+router.get('/bus_location', koaBody(), async (ctx, next) => {
     Driver.findOne({
         attributes: ['id', ctx.request.body.driverid]
     }).then(bus => {

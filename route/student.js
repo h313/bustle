@@ -11,7 +11,7 @@ router.get('/test', async (ctx, next) => {
     ctx.body = 'student_working';
 });
 
-router.get('/signup', async (ctx, next) => {
+router.get('/signup', koaBody(), async (ctx, next) => {
     sequelize.sync().then(function() {
         return Student.create({
             username: ctx.request.body.username,
@@ -24,7 +24,7 @@ router.get('/signup', async (ctx, next) => {
     });
 });
 
-router.get('/bus_location', async (ctx, next) => {
+router.get('/bus_location', koaBody(), async (ctx, next) => {
     Student.findOne({
         attributes: ['id', ctx.request.body.id]
     }).then(student => {

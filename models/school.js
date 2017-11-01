@@ -5,7 +5,8 @@ const db = require('../db/postgres'),
 const School = sequelize.define('school', {
     id: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     username: Sequelize.STRING,
     password: Sequelize.STRING,

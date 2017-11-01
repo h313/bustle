@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 const router = new Router({ prefix: '/driver' });
-const koaBody = require('../app');
+const koaBody = require('koa-body');
 
 const db = require('../db/postgres'),
     sequelize = db.sequelize,
@@ -24,21 +24,15 @@ router.post('/signup', koaBody(), async (ctx, next) => {
     }).then(function(driver) {
         let driver_stats = new DriverStats({id: driver.id, name: driver.name, school: driver.school});
         driver_stats.save(function (err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log('meow');
-            }
+            if (err) {console.log(err);}
         });
-        console.log(driver.get({
-            plain: true
-        }));
+        ctx.body = JSON.stringify({id: driver.id});
     });
 });
 
-router.post('/update_location', async (ctx, next) => {
-    client.set(ctx.request.body.id, [ctx.request.body.latitude, ctx.request.body.longitude]);
-    ctx.body = {'success': 1};
+router.post('/update_location', koaBody(), async (ctx, next) => {
+    client.set(ctx.request.body.id, [ctx.request.body.lat, ctx.request.body.long].toString());
+    ctx.body = JSON.stringify({success: 1});
 });
 
 module.exports = router;

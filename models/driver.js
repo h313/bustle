@@ -5,7 +5,9 @@ const db = require('../db/postgres'),
 const Driver = sequelize.define('driver', {
     id: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true,
+        initialAutoIncrement: 0
     },
     username: Sequelize.STRING,
     password: Sequelize.STRING,
