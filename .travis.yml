@@ -8,3 +8,5 @@ services:
   - mongodb
   - postgresql
   - redis-server
+before_script:
+  - psql -c 'create database bustle;' -U postgres
