@@ -37,7 +37,6 @@ router.get('/attachdriver', koaBody(), async (ctx, next) => {
     });
 });
 
-
 router.get('/bus_location', koaBody(), async (ctx, next) => {
     Student.findOne({
         attributes: ['id', ctx.request.body.id]
