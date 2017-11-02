@@ -1,3 +1,6 @@
+# Bustle frontend
+[![Build Status](https://travis-ci.com/h313/bustle.svg?token=5VwipWqAKTpp9nojTpee&branch=feature/frontend)](https://travis-ci.com/h313/bustle)
+
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
