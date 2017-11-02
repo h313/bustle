@@ -18,7 +18,7 @@ describe('Driver Functions', function() {
     });
     it('driver set location success', function(done) {
         request
-            .get('/driver/update_location')
+            .post('/driver/update_location')
             .field('id', '1')
             .field('lat', '3')
             .field('long', '3')
