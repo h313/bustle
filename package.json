@@ -32,12 +32,12 @@
     "koa-combine-routers": "^1.0.0",
     "koa-convert": "^1.2.0",
     "koa-router": "^7.2.0",
-    "mongoose": "^4.11.11",
+    "mongoose": "^4.12.6",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
     "pm2": "^2.7.2",
     "redis": "^2.8.0",
-    "sequelize": "^4.8.4",
+    "sequelize": "^4.22.0",
     "streaming-json-stringify": "^3.1.0"
   },
   "devDependencies": {
