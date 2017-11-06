@@ -10,3 +10,4 @@ services:
   - redis-server
 before_script:
   - psql -c 'create database bustle;' -U postgres
+  - psql -c 'create user bustle with password "bustle"' -U postgres
