@@ -4,7 +4,7 @@ const request = require('supertest').agent(app.listen());
 describe('Driver Functions', function() {
     it('Driver sign up success', function(done) {
         request
-            .post('/driver/signup/')
+            .post('/driver/signup')
             .field('username', 'bobross')
             .field('password', 'paintingmagic')
             .field('name', 'Bob Ross')
