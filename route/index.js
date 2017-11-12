@@ -5,10 +5,10 @@ const driverRouter = require('./driver');
 const schoolRouter = require('./school');
 
 const router = combineRouters([
-    testRouter,
-    studentRouter,
-    driverRouter,
-    schoolRouter
+  testRouter,
+  studentRouter,
+  driverRouter,
+  schoolRouter,
 ]);
 
 module.exports = router;
