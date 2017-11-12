@@ -9,34 +9,25 @@ router.get('/test', async (ctx) => {
 });
 
 router.post('/signup', async (ctx) => {
-  Student.create({
+  await Student.create({
     username: ctx.request.body.username,
     password: ctx.request.body.password,
     school: ctx.request.body.school,
-  }).then((student) => {
-    console.log(student.get({
-      plain: true,
-    }));
   });
 });
 
 router.get('/attachdriver', async (ctx) => {
-  Student.findOne({
-    attributes: ['id', ctx.request.body.id],
-  }).then((student) => {
-    student.driver = ctx.request.body.driver;
-    student.save().then(() => {
-      ctx.body = JSON.stringify({ success: 1 });
-    });
-  });
+  const { id, driver } = ctx.request.body;
+  await Student.update(
+    { driver },
+    { where: { id } },
+  );
+  ctx.body = { success: 1 };
 });
 
 router.get('/bus_location', async (ctx) => {
-  Student.findOne({
-    attributes: ['id', ctx.request.body.id],
-  }).then((student) => {
-    ctx.body = client.get(student.driver.id);
-  });
+  const student = await Student.findById(ctx.request.body.id);
+  ctx.body = client.get(student.driver.id);
 });
 
 module.exports = router;
