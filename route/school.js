@@ -1,12 +1,11 @@
 const Router = require('koa-router');
-
-const router = new Router({ prefix: '/school' });
 const koaBody = require('koa-body');
-
 const { sequelize } = require('../db/postgres');
 const School = require('../models/school');
 const Driver = require('../models/driver');
 const client = require('../db/redis');
+
+const router = new Router();
 
 router.get('/test', async (ctx) => {
   ctx.body = 'school_working';

@@ -1,12 +1,11 @@
 const Router = require('koa-router');
-
-const router = new Router({ prefix: '/driver' });
 const koaBody = require('koa-body');
-
 const { sequelize } = require('../db/postgres');
 const client = require('../db/redis');
 const Driver = require('../models/driver');
 const DriverStats = require('../models/driver_stats');
+
+const router = new Router();
 
 router.get('/test', async (ctx) => {
   ctx.body = 'driver_working';
