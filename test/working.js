@@ -1,3 +1,4 @@
+/* eslint no-undef: 0 */
 const app = require('../app');
 const request = require('supertest').agent(app.listen());
 
@@ -7,8 +8,8 @@ describe('General Functions', () => {
       .get('/status/')
       .expect(200)
       .expect('working')
-      .end((err, res) => {
-        if (err) { return done(err); }
+      .end((err) => {
+        if (err) { done(err); }
         done();
       });
   });
@@ -17,8 +18,8 @@ describe('General Functions', () => {
       .get('/student/test')
       .expect(200)
       .expect('student_working')
-      .end((err, res) => {
-        if (err) { return done(err); }
+      .end((err) => {
+        if (err) { done(err); }
         done();
       });
   });
@@ -27,8 +28,8 @@ describe('General Functions', () => {
       .get('/driver/test')
       .expect(200)
       .expect('driver_working')
-      .end((err, res) => {
-        if (err) { return done(err); }
+      .end((err) => {
+        if (err) { done(err); }
         done();
       });
   });
@@ -37,8 +38,8 @@ describe('General Functions', () => {
       .get('/school/test')
       .expect(200)
       .expect('school_working')
-      .end((err, res) => {
-        if (err) { return done(err); }
+      .end((err) => {
+        if (err) { done(err); }
         done();
       });
   });

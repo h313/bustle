@@ -2,7 +2,7 @@ const Router = require('koa-router');
 
 const router = new Router({ prefix: '/status' });
 
-router.get('/', async (ctx, next) => {
+router.get('/', async (ctx) => {
   ctx.body = 'working';
 });
 

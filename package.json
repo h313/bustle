@@ -38,14 +38,14 @@
     "pm2": "^2.7.2",
     "redis": "^2.8.0",
     "sequelize": "^4.22.0",
-    "streaming-json-stringify": "^3.1.0"
+    "streaming-json-stringify": "^3.1.0",
+    "supertest": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^4.11.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
     "mocha": "*",
-    "should": "^3.3.2",
-    "supertest": "^3.0.0"
+    "should": "^3.3.2"
   }
 }

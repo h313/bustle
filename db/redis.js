@@ -1,5 +1,5 @@
-const redis = require('redis'),
+const redis = require('redis');
 
-  client = redis.createClient();
+const client = redis.createClient();
 
 module.exports = client;

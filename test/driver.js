@@ -1,3 +1,4 @@
+/* eslint no-undef: 0 */
 const app = require('../app');
 const request = require('supertest').agent(app.listen());
 
@@ -10,8 +11,8 @@ describe('Driver Functions', () => {
       .field('name', 'Bob Ross')
       .field('school', '1')
       .expect(200)
-      .end((err, res) => {
-        if (err) { return done(err); }
+      .end((err) => {
+        if (err) { done(err); }
         done();
       });
   });
@@ -22,8 +23,8 @@ describe('Driver Functions', () => {
       .field('lat', '3')
       .field('long', '3')
       .expect(200)
-      .end((err, res) => {
-        if (err) { return done(err); }
+      .end((err) => {
+        if (err) { done(err); }
         done();
       });
   });

@@ -1,6 +1,4 @@
-const db = require('../db/postgres'),
-  sequelize = db.sequelize,
-  Sequelize = db.Sequelize;
+const { sequelize, Sequelize } = require('../db/postgres');
 
 const School = sequelize.define('school', {
   id: {

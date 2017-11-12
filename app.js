@@ -3,7 +3,7 @@ const router = require('./route');
 const convert = require('koa-convert');
 const koaBody = require('koa-body');
 
-const app = module.exports = new Koa();
+const app = new Koa();
 
 app.use(convert(router));
 app.use(koaBody());
