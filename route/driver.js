@@ -1,5 +1,4 @@
 const Router = require('koa-router');
-const koaBody = require('koa-body');
 const { sequelize } = require('../db/postgres');
 const client = require('../db/redis');
 const Driver = require('../models/driver');
@@ -11,7 +10,7 @@ router.get('/test', async (ctx) => {
   ctx.body = 'driver_working';
 });
 
-router.post('/signup', koaBody(), async (ctx) => {
+router.post('/signup', async (ctx) => {
   sequelize.sync().then(() => Driver.create({
     username: ctx.request.body.username,
     password: ctx.request.body.password,
@@ -32,7 +31,7 @@ router.post('/signup', koaBody(), async (ctx) => {
   });
 });
 
-router.post('/update_location', koaBody(), async (ctx) => {
+router.post('/update_location', async (ctx) => {
   client.set(
     ctx.request.body.id,
     JSON.stringify({

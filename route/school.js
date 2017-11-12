@@ -1,5 +1,4 @@
 const Router = require('koa-router');
-const koaBody = require('koa-body');
 const { sequelize } = require('../db/postgres');
 const School = require('../models/school');
 const Driver = require('../models/driver');
@@ -11,7 +10,7 @@ router.get('/test', async (ctx) => {
   ctx.body = 'school_working';
 });
 
-router.post('/signup', koaBody(), async (ctx) => {
+router.post('/signup', async (ctx) => {
   sequelize.sync().then(() => School.create({
     username: ctx.request.body.username,
     password: ctx.request.body.password,
@@ -21,7 +20,7 @@ router.post('/signup', koaBody(), async (ctx) => {
   });
 });
 
-router.get('/get_buses', koaBody(), async (ctx) => {
+router.get('/get_buses', async (ctx) => {
   School.findOne({
     attributes: ['school', ctx.request.body.id],
   }.then((school) => {
@@ -37,7 +36,7 @@ router.get('/get_buses', koaBody(), async (ctx) => {
   }));
 });
 
-router.get('/bus_location', koaBody(), async (ctx) => {
+router.get('/bus_location', async (ctx) => {
   Driver.findOne({
     where: {
       id: ctx.request.headers.driver_id,

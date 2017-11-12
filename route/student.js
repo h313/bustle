@@ -1,5 +1,4 @@
 const Router = require('koa-router');
-const koaBody = require('koa-body');
 const { sequelize } = require('../db/postgres');
 const Student = require('../models/student');
 const client = require('../db/redis');
@@ -10,7 +9,7 @@ router.get('/test', async (ctx) => {
   ctx.body = 'student_working';
 });
 
-router.post('/signup', koaBody(), async (ctx) => {
+router.post('/signup', async (ctx) => {
   sequelize.sync().then(() => Student.create({
     username: ctx.request.body.username,
     password: ctx.request.body.password,
@@ -22,7 +21,7 @@ router.post('/signup', koaBody(), async (ctx) => {
   });
 });
 
-router.get('/attachdriver', koaBody(), async (ctx) => {
+router.get('/attachdriver', async (ctx) => {
   Student.findOne({
     attributes: ['id', ctx.request.body.id],
   }).then((student) => {
@@ -33,7 +32,7 @@ router.get('/attachdriver', koaBody(), async (ctx) => {
   });
 });
 
-router.get('/bus_location', koaBody(), async (ctx) => {
+router.get('/bus_location', async (ctx) => {
   Student.findOne({
     attributes: ['id', ctx.request.body.id],
   }).then((student) => {
