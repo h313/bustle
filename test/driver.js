@@ -12,8 +12,7 @@ describe('Driver Functions', () => {
       .field('school', '1')
       .expect(200)
       .end((err) => {
-        if (err) { done(err); }
-        done();
+        done(err);
       });
   });
   it('driver set location success', (done) => {
@@ -24,8 +23,7 @@ describe('Driver Functions', () => {
       .field('long', '3')
       .expect(200)
       .end((err) => {
-        if (err) { done(err); }
-        done();
+        done(err);
       });
   });
 });
