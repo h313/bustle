@@ -1,5 +1,4 @@
 const Router = require('koa-router');
-const { sequelize } = require('../db/postgres');
 const Student = require('../models/student');
 const client = require('../db/redis');
 
@@ -10,11 +9,11 @@ router.get('/test', async (ctx) => {
 });
 
 router.post('/signup', async (ctx) => {
-  sequelize.sync().then(() => Student.create({
+  Student.create({
     username: ctx.request.body.username,
     password: ctx.request.body.password,
     school: ctx.request.body.school,
-  })).then((student) => {
+  }).then((student) => {
     console.log(student.get({
       plain: true,
     }));

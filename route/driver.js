@@ -1,5 +1,4 @@
 const Router = require('koa-router');
-const { sequelize } = require('../db/postgres');
 const client = require('../db/redis');
 const Driver = require('../models/driver');
 const DriverStats = require('../models/driver_stats');
@@ -11,12 +10,12 @@ router.get('/test', async (ctx) => {
 });
 
 router.post('/signup', async (ctx) => {
-  sequelize.sync().then(() => Driver.create({
+  Driver.create({
     username: ctx.request.body.username,
     password: ctx.request.body.password,
     name: ctx.request.body.name,
     school: ctx.request.body.school,
-  })).then((driver) => {
+  }).then((driver) => {
     const driverStats = new DriverStats({
       id: driver.id,
       name: driver.name,
