@@ -4,8 +4,8 @@ const bodyParser = require('koa-bodyparser');
 
 const app = new Koa();
 
-app.use(router.routes(), router.allowedMethods());
 app.use(bodyParser());
+app.use(router.routes(), router.allowedMethods());
 app.use((ctx) => {
   ctx.body = `Request Body: ${JSON.stringify(ctx.request.body)}`;
 });
