@@ -1,6 +1,5 @@
-const Bluebird = require('bluebird');
-const redis = Bluebird.promisifyAll(require('redis'));
+const redis = require('redis');
 
-const client = await redis.createClient();
+const client = redis.createClient();
 
 module.exports = client;
