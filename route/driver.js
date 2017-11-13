@@ -21,7 +21,7 @@ router.post('/signup', async (ctx) => {
     name: driver.name,
     school: driver.school,
   });
-  await driverStats.save();
+  driverStats.save();
   ctx.body = { id: driver.id };
 });
 
