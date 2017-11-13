@@ -7,11 +7,26 @@ const Driver = sequelize.define('driver', {
     autoIncrement: true,
     initialAutoIncrement: 0,
   },
-  username: Sequelize.STRING,
-  password: Sequelize.STRING,
-  name: Sequelize.STRING,
-  school: Sequelize.INTEGER,
-  students: Sequelize.ARRAY(Sequelize.INTEGER),
+  username: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  school: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  students: {
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
+    allowNull: false,
+  },
 });
 
 module.exports = Driver;

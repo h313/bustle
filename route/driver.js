@@ -26,7 +26,7 @@ router.post('/signup', async (ctx) => {
         console.log(err);
       }
     });
-    ctx.body = JSON.stringify({ id: driver.id });
+    ctx.body = { id: driver.id };
   });
 });
 
