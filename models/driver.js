@@ -23,10 +23,7 @@ const Driver = sequelize.define('driver', {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
-  students: {
-    type: Sequelize.ARRAY(Sequelize.INTEGER),
-    allowNull: false,
-  },
+  students: Sequelize.ARRAY(Sequelize.INTEGER),
 });
 
 module.exports = Driver;
