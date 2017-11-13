@@ -4,9 +4,10 @@
   "description": "a modern bus tracking service",
   "main": "app.js",
   "scripts": {
-    "test": "mocha test --reporter spec --exit",
+    "test": "DEBUG=koa* mocha test --reporter spec --exit",
     "app": "node app.js",
-    "prod": "pm2 start app.js"
+    "prod": "pm2 start app.js",
+    "debug": "DEBUG=koa* node app.js"
   },
   "repository": {
     "type": "git",

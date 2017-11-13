@@ -1,7 +1,7 @@
 const Router = require('koa-router');
-const client = require('../db/redis');
 const Driver = require('../models/driver');
 const DriverStats = require('../models/driver_stats');
+const client = require('../db/redis');
 
 const router = new Router();
 
