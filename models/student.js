@@ -6,9 +6,18 @@ const Student = sequelize.define('student', {
     primaryKey: true,
     autoIncrement: true,
   },
-  username: Sequelize.STRING,
-  password: Sequelize.STRING,
-  name: Sequelize.STRING,
+  username:  {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  password:  {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   school: Sequelize.INTEGER,
   driver: Sequelize.INTEGER,
 });

@@ -6,10 +6,22 @@ const School = sequelize.define('school', {
     primaryKey: true,
     autoIncrement: true,
   },
-  username: Sequelize.STRING,
-  password: Sequelize.STRING,
-  name: Sequelize.STRING,
-  students: Sequelize.ARRAY(Sequelize.INTEGER),
+  username: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  students: {
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
+    allowNull: false,
+  },
 });
 
 module.exports = School;
