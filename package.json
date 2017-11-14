@@ -14,7 +14,6 @@
     "url": "git+https://github.com/h313/bustle.git"
   },
   "keywords": [
-    "bustle",
     "bus",
     "nodejs",
     "koa",
