@@ -9,10 +9,12 @@ router.get('/test', async (ctx) => {
 });
 
 router.post('/signup', async (ctx) => {
-  await Student.create({
+  Student.create({
     username: ctx.request.body.username,
     password: ctx.request.body.password,
     school: ctx.request.body.school,
+  }).then((student) => {
+    ctx.body = { id: student.id };
   });
 });
 
