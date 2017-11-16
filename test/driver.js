@@ -1,9 +1,10 @@
-/* eslint no-undef: 0 */
+/* eslint no-undef: 1 */
 const app = require('../app');
 const request = require('supertest').agent(app.listen());
 
 describe('Driver Functions', () => {
   it('Driver sign up success', (done) => {
+    this.timeout(30000);
     request
       .post('/driver/signup')
       .send({
