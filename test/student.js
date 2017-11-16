@@ -1,10 +1,10 @@
 /* eslint no-undef: 1 */
 const app = require('../app');
 const request = require('supertest').agent(app.listen());
+const sleepfor = require('sleepfor');
 
 describe('Student Functions', () => {
   it('Student sign up success', (done) => {
-    this.timeout(30000);
     request
       .post('/student/signup')
       .send({

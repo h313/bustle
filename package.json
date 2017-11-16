@@ -46,6 +46,7 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
     "mocha": "*",
-    "should": "^3.3.2"
+    "should": "^3.3.2",
+    "sleepfor": "0.0.2"
   }
 }
