@@ -38,7 +38,7 @@ router.get('/get_buses', async (ctx) => {
 router.get('/bus_location', async (ctx) => {
   Driver.findOne({
     where: {
-      id: ctx.request.headers.driver_id,
+      id: ctx.request.body.driver_id,
     },
   }).then((bus) => {
     client.get(bus.id, (err, coords) => {
