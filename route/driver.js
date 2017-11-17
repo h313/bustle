@@ -1,6 +1,5 @@
 const Router = require('koa-router');
 const Driver = require('../models/driver');
-const DriverStats = require('../models/driver_stats');
 const client = require('../db/redis');
 
 const router = new Router();
@@ -16,12 +15,6 @@ router.post('/signup', async (ctx) => {
     name: ctx.request.body.name,
     school: ctx.request.body.school,
   });
-  const driverStats = new DriverStats({
-    id: driver.id,
-    name: driver.name,
-    school: driver.school,
-  });
-  driverStats.save();
   ctx.body = { id: driver.id };
 });
 
