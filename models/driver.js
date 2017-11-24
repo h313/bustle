@@ -24,6 +24,7 @@ const Driver = sequelize.define('driver', {
     allowNull: false,
   },
   students: Sequelize.ARRAY(Sequelize.INTEGER),
+  bus_routes: Sequelize.ARRAY(Sequelize.INTEGER),
 });
 
 module.exports = Driver;

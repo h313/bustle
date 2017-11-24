@@ -14,5 +14,4 @@ app.use((ctx) => {
 
 sequelize.sync({ force: true }).then(() => app.listen(8080));
 
-
 module.exports = app;
