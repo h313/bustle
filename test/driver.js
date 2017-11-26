@@ -1,5 +1,5 @@
 /* eslint no-undef: 1 */
-const app = require('../app');
+const app = require('../src/app');
 const request = require('supertest').agent(app.listen());
 const sleepfor = require('sleepfor');
 

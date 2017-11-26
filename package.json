@@ -5,9 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha test --reporter spec --exit",
-    "app": "node app.js",
-    "prod": "pm2 start app.js",
-    "debug": "DEBUG=koa* node app.js"
+    "app": "node src/app.js",
+    "prod": "pm2 start src/app.js",
+    "debug": "DEBUG=koa* node src/app.js"
   },
   "repository": {
     "type": "git",

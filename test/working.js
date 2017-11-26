@@ -1,5 +1,5 @@
 /* eslint no-undef: 0 */
-const app = require('../app');
+const app = require('../src/app');
 const request = require('supertest').agent(app.listen());
 
 describe('General Functions', () => {
