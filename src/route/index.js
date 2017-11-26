@@ -5,7 +5,7 @@ const studentRouter = require('./student');
 const driverRouter = require('./driver');
 const schoolRouter = require('./school');
 
-const router = new Router();
+const router = new Router({ prefix: '/api' });
 router
   .use('/status', testRouter.routes(), testRouter.allowedMethods())
   .use('/auth', authRouter.routes(), authRouter.allowedMethods())
