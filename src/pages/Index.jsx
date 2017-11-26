@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default () => (
   <div>
@@ -7,4 +7,4 @@ export default () => (
     <p><Link to="/login">login</Link></p>
     <p><Link to="/register">register</Link></p>
   </div>
-)
+);
