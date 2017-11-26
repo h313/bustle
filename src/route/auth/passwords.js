@@ -1,14 +1,12 @@
 const assert = require('assert');
-const bcrypt = require('bcrypt');
+const bcrypt = require('./hashing');
 const User = require('../../models/user');
-
-const saltRounds = 13;
 
 async function register(ctx, next) {
   try {
     const { name, email, password } = ctx.request.body;
     assert(password);
-    const hash = await bcrypt.hash(password, saltRounds);
+    const hash = await bcrypt.hash(password);
     const user = await User.create({ name, email, hash });
     ctx.state.user = user;
     await next();
