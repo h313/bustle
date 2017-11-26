@@ -9,9 +9,11 @@ async function register(ctx, next) {
     const { name, email, password } = ctx.request.body;
     assert(password);
     const hash = await bcrypt.hash(password, saltRounds);
-    await User.create({ name, email, hash });
+    const user = await User.create({ name, email, hash });
+    ctx.state.user = user;
     await next();
   } catch (err) {
+    console.log(err);
     ctx.status = 400;
   }
 }
@@ -19,14 +21,15 @@ async function register(ctx, next) {
 async function login(ctx, next) {
   try {
     const { email, password } = ctx.request.body;
-    const { hash } = await User.findOne({
-      attributes: ['hash'],
+    const user = await User.findOne({
       where: { email },
       plain: true,
     });
-    assert(await bcrypt.compare(password, hash));
+    assert(await bcrypt.compare(password, user.hash));
+    ctx.state.user = user;
     await next();
   } catch (err) {
+    console.log(err);
     ctx.status = 401;
   }
 }
