@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default () => (
   <div>
-    <Link to="/superLazy">super lazy</Link>
-    <p>this was lazily loaded</p>
+    <Link to="/">home</Link>
+    <h1>Register</h1>
   </div>
 )

@@ -1,27 +1,32 @@
-import React from 'react'
-import Loadable from 'react-loadable';
+import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
+import { connect } from 'react-redux';
 
-const Loading = () => <p>Loading</p>
+import Index from './pages/Index'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
-const Lazy = Loadable({
-  loader: () => import('./pages/Lazy'),
-  loading: Loading,
-})
+function mapStateToProps(state) {
+  return {
+    
+  }
+}
 
-const SuperLazy = Loadable({
-  loader: () => import('./pages/SuperLazy'),
-  loading: Loading,
-})
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <Route exact path="/" component={Index} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+        </div>
+      </Router>
+    )
+  }
+}
 
-export default () => (
-  <Router>
-    <div>
-      <Route exact path="/" component={Lazy} />
-      <Route path="/SuperLazy" component={SuperLazy} />
-    </div>
-  </Router>
-);
+export default connect(mapStateToProps)(App);
