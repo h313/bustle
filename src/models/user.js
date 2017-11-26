@@ -1,27 +1,34 @@
 const { sequelize, Sequelize } = require('../db/postgres');
 
-const School = sequelize.define('school', {
+const User = sequelize.define('users', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  username: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
   name: {
     type: Sequelize.STRING,
     allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
   },
-  students: {
-    type: Sequelize.ARRAY(Sequelize.INTEGER),
+  email: {
+    type: Sequelize.STRING,
+    unique: true,
     allowNull: false,
+    validate: {
+      notEmpty: true,
+      isEmail: true,
+    },
+  },
+  hash: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
   },
 });
 
-module.exports = School;
+module.exports = User;

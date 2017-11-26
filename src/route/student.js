@@ -1,21 +1,10 @@
 const Router = require('koa-router');
-const Student = require('../models/student');
 const client = require('../db/redis');
 
 const router = new Router();
 
 router.get('/test', async (ctx) => {
   ctx.body = 'student_working';
-});
-
-router.post('/signup', async (ctx) => {
-  const student = await Student.create({
-    username: ctx.request.body.username,
-    password: ctx.request.body.password,
-    name: ctx.request.body.name,
-    school: ctx.request.body.school,
-  });
-  ctx.body = { id: student.id };
 });
 
 router.get('/attachdriver', async (ctx) => {

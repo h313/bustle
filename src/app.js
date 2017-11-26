@@ -12,6 +12,7 @@ app.use((ctx) => {
   ctx.body = `Request Body: ${JSON.stringify(ctx.request.body)}`;
 });
 
-sequelize.sync({ force: true }).then(() => app.listen(8080));
+sequelize.sync({ force: true });
+app.listen(8080);
 
 module.exports = app;

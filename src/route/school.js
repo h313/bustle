@@ -1,22 +1,10 @@
 const Router = require('koa-router');
-const School = require('../models/school');
-const Driver = require('../models/driver');
 const client = require('../db/redis');
 
 const router = new Router();
 
 router.get('/test', async (ctx) => {
   ctx.body = 'school_working';
-});
-
-router.post('/signup', async (ctx) => {
-  School.create({
-    username: ctx.request.body.username,
-    password: ctx.request.body.password,
-    name: ctx.request.body.name,
-  }).then((school) => {
-    ctx.body = JSON.stringify({ id: school.id });
-  });
 });
 
 router.get('/get_buses', async (ctx) => {
