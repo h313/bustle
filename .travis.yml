@@ -9,5 +9,6 @@ services:
   - postgresql
   - redis-server
 before_script:
-  - psql -c "create database bustle;" -U postgres
   - psql -c "create user bustle with password 'bustle';" -U postgres
+  - psql -c "create database bustle;" -U postgres
+  - psql -c "GRANT ALL PRIVILEGES ON DATABASE bustle TO bustle;" -U postgres
