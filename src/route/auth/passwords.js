@@ -13,7 +13,6 @@ async function register(ctx, next) {
     ctx.state.user = user;
     await next();
   } catch (err) {
-    console.log(err);
     ctx.status = 400;
   }
 }
@@ -29,7 +28,6 @@ async function login(ctx, next) {
     ctx.state.user = user;
     await next();
   } catch (err) {
-    console.log(err);
     ctx.status = 401;
   }
 }

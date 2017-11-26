@@ -42,7 +42,6 @@ async function validateRefreshToken(ctx, next) {
 }
 
 async function serializeTokens(ctx, next) {
-  console.log('serializing');
   ctx.body = {
     token: ctx.state.token,
     refreshToken: ctx.state.refreshToken,
