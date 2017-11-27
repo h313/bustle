@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Input, Form, Select, Dropdown, DropdownSearchInput } from 'semantic-ui-react';
+import { Button, Input, Form, Select, Dropdown } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import '../index.css'
 
@@ -10,6 +10,10 @@ const testSchools = [{key: 'csw', text: "Charter School of Wilmington", value: '
 
 const roles = [{key: 's', text: 'Student', value: 'student'},{key: 'd', text: 'Driver', value: 'driver'},{key: 'a', text: 'Administrator', value: 'admin'}]
 
+const submitForm = () => {
+  alert("Form submitted (But right now that doesn't mean much)");
+}
+ 
 export default () => (
     <div>
         <div className='bustleHeader'>
@@ -22,7 +26,7 @@ export default () => (
         </Link>
         </div>
         <h1>Sign Up Here</h1>
-        {/*TODO: Add actual functionality upon submission*/}
+        {/*TODO: Add actual functionality upon submission, make submit disabled until all form fields are filled, different registration based on role*/}
         <Form>
             <Form.Field
                 control={Select}
@@ -57,17 +61,19 @@ export default () => (
             
             <Form.Field
                 control={Input}
+                type='password'
                 label='Password'
                 placeholder='Password'
             />
             
             <Form.Field
                 control={Input}
+                type='password'
                 label='Re-enter Password'
                 placeholder='Re-enter Password'
             />
             
-            <Button type="submit">Submit</Button>
+            <Button type="submit" onClick={submitForm}>Submit</Button>
         </Form>
     </div>
   )

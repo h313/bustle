@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
+import { Button, Header, Grid } from 'semantic-ui-react';
 
 export default () => (
   <div>
@@ -13,8 +13,16 @@ export default () => (
         >Bustle</Button>
       </Link>
     </div>
-    <p/>
-    <p><Link to="/login"><Button secondary>Login</Button></Link></p>
-    <p><Link to="/register"><Button secondary>Register</Button></Link></p>
+    <Grid>
+      <Grid.Row centered>
+        <Header as='h1' textAlign='center'>Welcome to Bustle</Header>
+      </Grid.Row>
+      <Grid.Row centered>
+        <p><Link to="/register"><Button secondary={true}>Register</Button></Link></p>
+      </Grid.Row>
+      <Grid.Row centered>
+        <p><Link to="/login"><Button secondary={true}>Login</Button></Link></p>
+        </Grid.Row>
+    </Grid>
   </div>
 );
