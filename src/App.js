@@ -17,11 +17,17 @@ const SuperLazy = Loadable({
   loading: Loading,
 })
 
+const SignUp = Loadable({
+  loader: () => import('./pages/SignUp'),
+  loading: Loading,
+})
+
 export default () => (
   <Router>
     <div>
       <Route exact path="/" component={Lazy} />
       <Route path="/SuperLazy" component={SuperLazy} />
+      <Route path="/SignUp" component={SignUp} />
     </div>
   </Router>
 );
