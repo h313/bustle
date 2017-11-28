@@ -36,6 +36,10 @@ const User = sequelize.define('users', {
   refreshToken: {
     type: Sequelize.STRING,
   },
+  bus_routes: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
+  },
+
 });
 
 module.exports = User;

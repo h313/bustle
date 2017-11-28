@@ -1,6 +1,7 @@
 const Router = require('koa-router');
 const Location = require('../models/location');
 const client = require('../db/redis');
+const User = require('../models/user');
 
 const router = new Router();
 
@@ -20,7 +21,7 @@ router.post('/update_location', async (ctx) => {
 });
 
 router.post('/add_address', async (ctx) => {
-  const driver = await Driver.findOne({
+  const driver = await User.findOne({
     attributes: ['id', ctx.request.body.id],
   });
   Location.findOne({
