@@ -1,7 +1,7 @@
 const Router = require('koa-router');
 const client = require('../db/redis');
 const User = require('../models/user');
-const authed = require('./auth').authed;
+const { authed } = require('./auth');
 
 const router = new Router();
 
