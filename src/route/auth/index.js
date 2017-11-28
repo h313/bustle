@@ -1,6 +1,6 @@
 const Router = require('koa-router');
 const { register, login } = require('./passwords');
-const { refreshAuthToken, sendTokens } = require('./jwt');
+const { refreshAuthToken, sendTokens, authed } = require('./jwt');
 
 const authRouter = new Router();
 
@@ -9,4 +9,4 @@ authRouter
   .post('/register', register, sendTokens)
   .post('/login', login, sendTokens);
 
-module.exports = { authRouter };
+module.exports = { authRouter, authed };
