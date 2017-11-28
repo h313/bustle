@@ -1,5 +1,7 @@
 const Router = require('koa-router');
 const client = require('../db/redis');
+const Location = require('../models/location');
+const User = require('../models/user');
 
 const router = new Router();
 
@@ -9,7 +11,7 @@ router.get('/test', async (ctx) => {
 
 router.get('/attachdriver', async (ctx) => {
   const { id, driver } = ctx.request.body;
-  await Student.update(
+  await User.update(
     { driver },
     { where: { id } },
   );
@@ -17,8 +19,12 @@ router.get('/attachdriver', async (ctx) => {
 });
 
 router.get('/bus_location', async (ctx) => {
-  const student = await Student.findById(ctx.request.body.id);
-  ctx.body = client.get(student.driver.id);
+  const student = await User.findById(ctx.request.body.id);
+  const coords = JSON.parse(client.get(student.driver.id));
+  const location = await Location.findOne({
+    attributes: ['longitude', coords.longitude, 'latitude', coords.latitude],
+  });
+  ctx.body = { address: location.address };
 });
 
 module.exports = router;
