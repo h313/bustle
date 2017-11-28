@@ -23,9 +23,7 @@ router.post('/update_location', authed, async (ctx) => {
 
 router.post('/add_address', authed, async (ctx) => {
   const driver = await User.findOne({
-    where: {
-      id: ctx.state.user.id,
-    },
+    where: { id: ctx.state.user.id, },
   });
   Location.findOne({
     where: {
