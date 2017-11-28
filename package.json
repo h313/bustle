@@ -2,7 +2,7 @@
   "name": "bustle",
   "version": "0.1.0",
   "description": "a modern bus tracking service",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "mocha test --reporter spec --exit",
     "app": "node src/app.js",
@@ -37,7 +37,7 @@
     "koa-jwt": "^3.2.2",
     "koa-router": "^7.2.0",
     "mongoose": "^4.12.6",
-    "pg": "^7.3.0",
+    "pg": "^6.4.2",
     "pg-hstore": "^2.3.2",
     "pm2": "^2.7.2",
     "redis": "^2.8.0",
