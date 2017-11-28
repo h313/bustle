@@ -7,6 +7,7 @@
   long: ctx.request.body.long,
 }
 ```
+returns `{ success: 1 }`
 
 ### `/api/driver/add_address`
 ```
@@ -16,3 +17,4 @@
   address: ctx.request.body.address,
 }
 ```
+returns `{ id: location.id }`
