@@ -65,7 +65,21 @@ const refreshAuthToken = compose([
   serializeTokens,
 ]);
 
-const authed = koaJwt({ secret: process.env.SECRET_KEY });
+async function authed(ctx, next) {
+  if (!ctx.header || !ctx.header.authorization) {
+    return;
+  }
+  const parts = ctx.header.authorization.split(' ');
+  if (!/^Bearer$/i.test(parts[0])) {
+    return;
+  }
+  const token = parts[1];
+  await verify(token, process.env.SECRET_KEY);
+  ctx.state.user = {
+    id: jwt.decode(token).id,
+  };
+  await next();
+}
 
 module.exports = {
   refreshAuthToken,
