@@ -66,19 +66,19 @@ const refreshAuthToken = compose([
 ]);
 
 async function authed(ctx, next) {
-  if (!ctx.header || !ctx.header.authorization) {
-    return;
+  try {
+    assert(ctx.header && ctx.header.authorization);
+    const parts = ctx.header.authorization.split(' ');
+    assert(/^Bearer$/i.test(parts[0]));
+    const token = parts[1];
+    await verify(token, process.env.SECRET_KEY);
+    ctx.state.user = {
+      id: jwt.decode(token).id,
+    };
+    await next();
+  } catch (err) {
+    ctx.status = 401;
   }
-  const parts = ctx.header.authorization.split(' ');
-  if (!/^Bearer$/i.test(parts[0])) {
-    return;
-  }
-  const token = parts[1];
-  await verify(token, process.env.SECRET_KEY);
-  ctx.state.user = {
-    id: jwt.decode(token).id,
-  };
-  await next();
 }
 
 module.exports = {
