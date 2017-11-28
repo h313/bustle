@@ -11,7 +11,9 @@ router.get('/test', async (ctx) => {
 
 router.get('/get_buses', authed, async (ctx) => {
   User.findAll({
-    attributes: ['school', ctx.state.user.id],
+    where: {
+      school: ctx.state.user.id,
+    },
   }).then((drivers) => {
     const ret = [];
     drivers.forEach((driver) => {

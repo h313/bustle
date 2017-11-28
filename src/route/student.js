@@ -34,7 +34,10 @@ router.get('/bus_location', authed, async (ctx) => {
   const student = await User.findById(ctx.state.user.id);
   const coords = JSON.parse(client.get(student.driver.id));
   const location = await Location.findOne({
-    attributes: ['longitude', coords.longitude, 'latitude', coords.latitude],
+    where: {
+      longitude: coords.longitude,
+      latitude: coords.latitude,
+    },
   });
   ctx.body = { address: location.address };
 });
