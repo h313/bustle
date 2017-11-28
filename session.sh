@@ -28,6 +28,17 @@ jwt.decode(login["refreshToken"], verify=False)
 refresh = requests.post(f"{url}/auth/refresh", data={"refreshToken": login["refreshToken"]})
 refresh.text
 login["token"] = refresh.json()["token"]
+add_address = requests.post(f"{url}/api/driver/add_address", data={
+    "refreshToken": login["refreshToken"],
+    "longitude": 32,
+    "latitude": 33,
+    "address": "who knows",
+})
+print(add_address)
+new_location = requests.post(f"{url}/api/driver/update_location", data={
+    "refreshToken": login["refreshToken"],
+    "longitude": 32,
+    "latitude": 33,
+})
+print(new_location)
 ```
-
-
