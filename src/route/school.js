@@ -1,7 +1,7 @@
 const Router = require('koa-router');
 const client = require('../db/redis');
 const User = require('../models/user');
-const { authRouter, authed } = require('./auth');
+const authed = require('./auth').authed;
 
 const router = new Router();
 
@@ -10,30 +10,29 @@ router.get('/test', async (ctx) => {
 });
 
 router.get('/get_buses', authed, async (ctx) => {
-  User.findOne({
-    attributes: ['school', ctx.request.body.id],
-  }.then((school) => {
-    User.findAll({
-      attributes: ['school', school.id],
-    }).then((drivers) => {
-      const ret = [];
-      drivers.forEach((driver) => {
-        ret.push(driver.id);
-      });
-      ctx.body = ret;
+  User.findAll({
+    attributes: ['school', ctx.state.user.id],
+  }).then((drivers) => {
+    const ret = [];
+    drivers.forEach((driver) => {
+      ret.push(driver.id);
     });
-  }));
+    ctx.body = ret;
+  });
 });
 
 router.get('/bus_location', authed, async (ctx) => {
   User.findOne({
     where: {
       id: ctx.request.body.driver_id,
+      school: ctx.state.user.id,
     },
   }).then((bus) => {
-    client.get(bus.id, (err, coords) => {
-      ctx.body = JSON.stringify(coords);
-    });
+    if (bus != null) {
+      client.get(bus.id, (err, coords) => {
+        ctx.body = JSON.stringify(coords);
+      });
+    }
   });
 });
 

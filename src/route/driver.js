@@ -2,7 +2,7 @@ const Router = require('koa-router');
 const Location = require('../models/location');
 const client = require('../db/redis');
 const User = require('../models/user');
-const { authRouter, authed } = require('./auth');
+const authed = require('./auth').authed;
 
 const router = new Router();
 
@@ -12,7 +12,7 @@ router.get('/test', async (ctx) => {
 
 router.post('/update_location', authed, async (ctx) => {
   client.set(
-    ctx.request.body.id,
+    ctx.state.user.id,
     JSON.stringify({
       lat: ctx.request.body.lat,
       long: ctx.request.body.long,
@@ -23,12 +23,12 @@ router.post('/update_location', authed, async (ctx) => {
 
 router.post('/add_address', authed, async (ctx) => {
   const driver = await User.findOne({
-    attributes: ['id', ctx.request.body.id],
+    attributes: ['id', ctx.state.user.id],
   });
   Location.findOne({
     attributes: ['address', ctx.request.body.address],
   }).then((loc) => {
-    if (loc == null) {
+    if (loc != null) {
       Location.create({
         longitude: ctx.request.body.longitude,
         latitude: ctx.request.body.latitude,

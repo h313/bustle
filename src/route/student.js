@@ -2,7 +2,7 @@ const Router = require('koa-router');
 const client = require('../db/redis');
 const Location = require('../models/location');
 const User = require('../models/user');
-const { authRouter, authed } = require('./auth');
+const authed = require('./auth').authed;
 
 const router = new Router();
 
@@ -20,8 +20,9 @@ router.get('/attachdriver', authed, async (ctx) => {
 });
 
 router.get('/attachschool', authed, async (ctx) => {
+  const student = await User.findById(ctx.state.user.id);
   const { id, school } = ctx.request.body;
-  await User.update(
+  await student.update(
     { school },
     { where: { id } },
   );
@@ -30,7 +31,7 @@ router.get('/attachschool', authed, async (ctx) => {
 
 
 router.get('/bus_location', authed, async (ctx) => {
-  const student = await User.findById(ctx.request.body.id);
+  const student = await User.findById(ctx.state.user.id);
   const coords = JSON.parse(client.get(student.driver.id));
   const location = await Location.findOne({
     attributes: ['longitude', coords.longitude, 'latitude', coords.latitude],
