@@ -39,6 +39,7 @@ const User = sequelize.define('users', {
   bus_routes: {
     type: Sequelize.ARRAY(Sequelize.STRING),
     allowNull: true,
+    defaultValue: [],
   },
   school: {
     type: Sequelize.INTEGER,
@@ -48,6 +49,7 @@ const User = sequelize.define('users', {
   students: {
     type: Sequelize.ARRAY(Sequelize.STRING),
     allowNull: true,
+    defaultValue: [],
   },
   driver: {
     type: Sequelize.ARRAY(Sequelize.STRING),

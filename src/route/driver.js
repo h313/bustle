@@ -23,25 +23,21 @@ router.post('/update_location', authed, async (ctx) => {
 
 router.post('/add_address', authed, async (ctx) => {
   const driver = await User.findOne({
-    where: { id: ctx.state.user.id, },
+    where: { id: ctx.state.user.id },
   });
-  Location.findOne({
-    where: {
+  let location = await Location.findOne({
+    where: { address: ctx.request.body.address },
+  });
+  if (location === null) {
+    location = await Location.create({
+      longitude: ctx.request.body.long,
+      latitude: ctx.request.body.lat,
       address: ctx.request.body.address,
-    },
-  }).then((loc) => {
-    if (loc != null) {
-      Location.create({
-        longitude: ctx.request.body.longitude,
-        latitude: ctx.request.body.latitude,
-        address: ctx.request.body.address,
-      }).then((location) => {
-        driver.bus_routes.push(location.id);
-        driver.save();
-        ctx.body = { id: location.id };
-      });
-    }
-  });
+    });
+  }
+  driver.bus_routes.push(location.id);
+  await driver.save();
+  ctx.body = { id: location.id };
 });
 
 module.exports = router;
