@@ -5,11 +5,21 @@
 ```ipython
 import requests
 url = "http://localhost:8080/api"
-register = requests.post(f"{url}/auth/register", data={"name": "Mr. Kramer", "email": "ckramer@charterschool.org", "password": "hunter2"})
+register = requests.post(f"{url}/auth/register", data={
+    "name": "Mr. Kramer",
+    "email": "ckramer@charterschool.org",
+    "password": "hunter2"
+})
 register.text
-login = requests.post(f"{url}/auth/login", data={"email": "ckramer@charterschool.org", "password": "this password is incorrect"})
+login = requests.post(f"{url}/auth/login", data={
+    "email": "ckramer@charterschool.org",
+    "password": "this password is incorrect"
+})
 print(login.status_code, login.text)
-login = requests.post(f"{url}/auth/login", data={"email": "ckramer@charterschool.org", "password": "hunter2"})
+login = requests.post(f"{url}/auth/login", data={
+    "email": "ckramer@charterschool.org",
+    "password": "hunter2"
+})
 login = login.json()
 login
 import jwt
