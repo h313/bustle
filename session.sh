@@ -40,8 +40,8 @@ new_location = requests.post(f"{url}/driver/update_location",
 print(new_location)
 add_address = requests.post(f"{url}/driver/add_address",
     data={
-        "longitude": 32,
-        "latitude": 33,
+        "long": 32,
+        "lat": 33,
         "address": "who knows"
     },
     headers={
