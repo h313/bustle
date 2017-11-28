@@ -1,6 +1,7 @@
 const Router = require('koa-router');
 const client = require('../db/redis');
 const User = require('../models/user');
+const { authRouter, authed } = require('./auth');
 
 const router = new Router();
 
@@ -8,7 +9,7 @@ router.get('/test', async (ctx) => {
   ctx.body = 'school_working';
 });
 
-router.get('/get_buses', async (ctx) => {
+router.get('/get_buses', authed, async (ctx) => {
   User.findOne({
     attributes: ['school', ctx.request.body.id],
   }.then((school) => {
@@ -24,7 +25,7 @@ router.get('/get_buses', async (ctx) => {
   }));
 });
 
-router.get('/bus_location', async (ctx) => {
+router.get('/bus_location', authed, async (ctx) => {
   User.findOne({
     where: {
       id: ctx.request.body.driver_id,

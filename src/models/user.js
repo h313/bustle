@@ -39,7 +39,9 @@ const User = sequelize.define('users', {
   bus_routes: {
     type: Sequelize.ARRAY(Sequelize.STRING),
   },
-
+  students: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
+  },
 });
 
 module.exports = User;

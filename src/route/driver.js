@@ -2,6 +2,7 @@ const Router = require('koa-router');
 const Location = require('../models/location');
 const client = require('../db/redis');
 const User = require('../models/user');
+const { authRouter, authed } = require('./auth');
 
 const router = new Router();
 
@@ -9,7 +10,7 @@ router.get('/test', async (ctx) => {
   ctx.body = 'driver_working';
 });
 
-router.post('/update_location', async (ctx) => {
+router.post('/update_location', authed, async (ctx) => {
   client.set(
     ctx.request.body.id,
     JSON.stringify({
@@ -20,7 +21,7 @@ router.post('/update_location', async (ctx) => {
   ctx.body = JSON.stringify({ success: 1 });
 });
 
-router.post('/add_address', async (ctx) => {
+router.post('/add_address', authed, async (ctx) => {
   const driver = await User.findOne({
     attributes: ['id', ctx.request.body.id],
   });
