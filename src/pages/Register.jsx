@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Input, Form, Select, Dropdown, Header, Menu, Image } from 'semantic-ui-react';

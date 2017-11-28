@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+/* eslint-disable */
+import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -11,24 +12,20 @@ import Register from './pages/Register';
 import MapService from './pages/MapService';
 
 function mapStateToProps(state) {
-  return {
-
-  };
+  return state;
 }
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          <Route exact path="/" component={Index} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/mapService" component={MapService} />
-        </div>
-      </Router>
-    );
-  }
-}
+const App = () => { 
+  return (
+    <Router>
+      <div>
+        <Route exact path="/" component={Index} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/mapService" component={MapService} />
+      </div>
+    </Router>
+  );
+};
 
 export default connect(mapStateToProps)(App);

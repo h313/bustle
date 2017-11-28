@@ -10,7 +10,7 @@ const initialState = {
 
 };
 
-function reducer(state = initialState, action) {
+function reducer(state = initialState) {
   return state;
 }
 

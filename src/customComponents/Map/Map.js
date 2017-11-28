@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+/*eslint-disable*/
 import React, { Component } from 'react';
 import {
   withScriptjs,
@@ -12,7 +12,6 @@ import Search from "./Search";
 import StopList from "./Stops/StopList";
 import Directions from "./Directions";
 
-@observer
 @withScriptjs
 @withGoogleMap
 export default class Map extends Component {
