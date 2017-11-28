@@ -5,12 +5,16 @@ import {
   withGoogleMap,
   GoogleMap,
 } from 'react-google-maps';
+import { observer } from "mobx-react";
 
 import Markers from "./Markers";
 import Search from "./Search";
 import StopList from "./Stops/StopList";
 import Directions from "./Directions";
 
+@observer
+@withScriptjs
+@withGoogleMap
 export default class Map extends Component {
   handleClick = (e) => {
     const store = this.props.store;
@@ -32,7 +36,7 @@ export default class Map extends Component {
     )
   }
 
-  get render() {
+  render() {
     const store = this.props.store;
     return (
       <GoogleMap
