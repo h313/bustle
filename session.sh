@@ -39,10 +39,10 @@ add_address = requests.post(f"{url}/api/driver/add_address",
     }
 )
 print(add_address)
-new_location = requests.post(f"{url}/api/driver/update_location",
+new_location = requests.post(f"{url}/driver/update_location",
     data={
-        "longitude": 32,
-        "latitude": 33,
+        "long": 32,
+        "lat": 33,
     },
     headers={
         "authorization": f"Bearer {login['token']}"
