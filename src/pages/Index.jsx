@@ -1,28 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Header, Grid } from 'semantic-ui-react';
+import { Button, Header, Grid, Menu, Image } from 'semantic-ui-react';
 
 export default () => (
   <div>
-    <div className='bustleHeader'>
-      <Link to='/'>
-        <Button
-            inverted color = 'yellow'
+    <Menu inverted>
+      <Menu.Item>
+        <Link to='/'>
+          <Button
+            inverted color='yellow'
             size='massive'
-            className = 'homeBtn'
-        >Bustle</Button>
-      </Link>
-    </div>
+            className='homeBtn'
+          >Bustle</Button>
+        </Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Image avatar />
+        <span className='username'>Username</span>
+      </Menu.Item>
+    </Menu>
     <Grid>
       <Grid.Row centered>
         <Header as='h1' textAlign='center'>Welcome to Bustle</Header>
       </Grid.Row>
       <Grid.Row centered>
-        <p><Link to="/register"><Button secondary={true}>Register</Button></Link></p>
+        <Header as='h4' textAlign='center' color='grey'>You ain't hustlin' if you ain't bustlin'!</Header>
       </Grid.Row>
       <Grid.Row centered>
-        <p><Link to="/login"><Button secondary={true}>Login</Button></Link></p>
-        </Grid.Row>
+        <Link to="/register"><Button secondary={true}>Register</Button></Link>
+      </Grid.Row>
+      <Grid.Row centered>
+        <Link to="/login"><Button secondary={true}>Login</Button></Link>
+      </Grid.Row>
+      <Grid.Row centered>
+        <Link to="/mapService"><Button secondary={true}>Test Map Service</Button></Link>
+      </Grid.Row>
     </Grid>
   </div>
 );

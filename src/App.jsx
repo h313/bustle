@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import Index from './pages/Index';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import MapService from './pages/MapService';
 
 function mapStateToProps(state) {
   return {
@@ -23,6 +24,7 @@ class App extends Component {
           <Route exact path="/" component={Index} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/mapService" component={MapService} />
         </div>
       </Router>
     );
