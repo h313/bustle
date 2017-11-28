@@ -22,6 +22,10 @@ const User = sequelize.define('users', {
       isEmail: true,
     },
   },
+  type: {
+    type: Sequelize.ENUM,
+    values: ['student', 'driver', 'admin'],
+  },
   hash: {
     type: Sequelize.STRING,
     allowNull: false,
