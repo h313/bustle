@@ -6,7 +6,7 @@ const sleepfor = require('sleepfor');
 describe('Student Functions', () => {
   it('Student sign up success', (done) => {
     request
-      .post('/student/signup')
+      .post('/student/signup/')
       .send({
         username: 'johndough',
         password: 'generic',
