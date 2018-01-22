@@ -34,7 +34,7 @@ export default () => (
         <Link to="/login"><Button secondary={true}>Login</Button></Link>
       </Grid.Row>
       <Grid.Row centered>
-        <Link to="/mapService"><Button secondary={true}>Test Map Service</Button></Link>
+        <a href="http://h313.info/bustle/"><Button secondary={true}>Test Map Service</Button></a>
       </Grid.Row>
     </Grid>
   </div>
